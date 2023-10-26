@@ -62,16 +62,17 @@ int main(int argc, char** argv)
         sprintf(ipc_ptr,"%d",start_time);
         // TODO: get the list of arguments to be used in execvp() and 
         // execute execvp()
-
+        command_args = get_arguments(argc,argv);
+        execvp(command_args[0],command_args);
     }
     else { /* parent process */
         // TODO: have parent wait and get status of child.
         //       Use the variable status to store status of child. 
-        
+        wait(&status);
         // TODO: get the current time using gettimeofday
         gettimeofday(&current_time,NULL);
         // TODO: read the start time from IPC
-        
+        printf("%s",ipc_ptr);
         // TODO: close IPC
         icp_close();
         // NOTE: DO NOT ALTER THE LINE BELOW.

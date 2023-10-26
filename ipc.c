@@ -20,13 +20,12 @@ char* ipc_create(int size){
     int fd;
     /* pointer to shared memory object */
     char* ptr;
-
     // TODO: create the shared memory object called lab2
     fd = shm_open("lab2",O_CREAT | O_RDWR,0666);
     // TODO: configure the size of the shared memory object 
     ftruncate(fd, size);
     // TODO: memory map the shared memory object */
-    ptr = mmap(NULL,size, PROT_READ, MAP_PRIVATE, fd, 0);
+    ptr = mmap(0,size, PROT_READ, MAP_PRIVATE, fd, 0);
 
     return ptr;
 }
