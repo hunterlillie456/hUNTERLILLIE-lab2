@@ -57,9 +57,9 @@ int main(int argc, char** argv)
     }
     else if (pid == 0) { /*child process */
         // TODO: use gettimeofday to log the start time
-        gettimeofday();
+        gettimeofday(&start_time,NULL);
         // TODO: write the time to the IPC
-        
+        sprintf(ipc_ptr,"%d",start_time);
         // TODO: get the list of arguments to be used in execvp() and 
         // execute execvp()
 
@@ -69,11 +69,11 @@ int main(int argc, char** argv)
         //       Use the variable status to store status of child. 
         
         // TODO: get the current time using gettimeofday
-        
+        gettimeofday(&current_time,NULL);
         // TODO: read the start time from IPC
         
         // TODO: close IPC
-
+        icp_close();
         // NOTE: DO NOT ALTER THE LINE BELOW.
         printf("Elapsed time %.5f\n",elapsed_time(&start_time, &current_time));
     }
